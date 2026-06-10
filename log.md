@@ -44,3 +44,9 @@
 - **Fixed:** aionai-adapted-plan.md — added link to [[aionai-collaboration-model]] in Related section
 - **Noted:** entities/ directory empty (expected — only 1 source ingested); 14 of 37 tag taxonomy tags unused (expected for small corpus); no contradictions yet
 - **Remaining:** 2 pages' `updated` dates not bumped (minor — pages last written today)
+
+## [2026-06-10] op | Git repo initialized
+- `git init` in ~/wiki-seo/ — root commit `e57ddd7`
+- 12 files tracked (1 raw source, 8 wiki pages, SCHEMA.md, index.md, log.md)
+- `.gitignore` added for Obsidian workspace + OS junk
+- Wiki now has version history, branching, and rollback per the Karpathy pattern

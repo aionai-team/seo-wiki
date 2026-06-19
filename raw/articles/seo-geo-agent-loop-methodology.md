@@ -1,4 +1,11 @@
 ---
+title: SEO + GEO Agent Loop Methodology
+created: 2026-06-09
+updated: 2026-06-14
+type: summary
+tags: [seo, geo, pipeline, automation, data-flow, script]
+sources: []
+confidence: high
 source_url: file:///home/bog/Downloads/seo_geo_agent_loop.pdf
 ingested: 2026-06-09
 sha256: 3198ada744de0dbede2679ed174ee31fe918a7e3173bddfb69a48e3a738dd6e0
@@ -12,6 +19,8 @@ Purpose: Authoritative technical reference for the complete SEO + GEO agent loop
 every phase, every sub-step, every design decision — grounded in peer-reviewed
 research and production implementations.
 Version: 1.0 | Compiled June 2026
+
+Relevant wiki pages: [[geo-generative-engine-optimization]], [[seo-loop-methodology]], [[agenticgeo-inner-loop]], [[seo-geo-master-agent-loop]], [[token-saving-strategies]], [[human-vs-ai-seo-agent]].
 
 Table of Contents
 1. Introduction
@@ -39,7 +48,7 @@ generative engine responses" — outputs from LLM-powered search engines such as
 Perplexity, Claude, and Google AI Overview (Aggarwal et al., 2023, arXiv:2311.09735). Unlike SEO,
 GEO measures visibility via Attributed Word Count (how many words from a source are used in
 
-the engine's answer) and Position-Weighted Citation Order (how early in the answer the source
+the engine's answer) and Position-Weighted Citation Order (how early in the answer the source
 appears).
 Answer Engine Optimization (AEO) targets direct-answer contexts (voice search, featured
 snippets, PAAs). Manasa et al. (2025) frame SEO, GEO, and AEO as a unified continuum sharing
@@ -82,7 +91,7 @@ Observe
 
 Perceive environment state: current rankings, AI visibility scores, page content, Obsidian memory, crawl data
 
-Beat
+Beat
 
 Description
 
@@ -134,7 +143,7 @@ This is the unified SEO + GEO loop. It should be implemented as a single state m
 explicit phase transitions. The loop targets one content unit (URL or topic cluster) per full
 execution.
 
-Phase 0: Initialization & Memory Load
+Phase 0: Initialization & Memory Load
 Goal: Establish current context from persistent memory before any external calls.
 Sub-steps:
 1. Load target: Read target URL, keyword, or topic from task queue (Obsidian inbox note or
@@ -150,8 +159,8 @@ MAP-Elites strategy archive (see Section 7)
 baseline to null (first run).
 4. Confirm loop state: Check if a previous run was interrupted mid-loop (incremental state
 file). Resume from the last completed phase if so.
-5. Load config: API keys, target platforms list (ChatGPT, Perplexity, Claude, Gemini, Google
-AI, Grok, Copilot, DeepSeek), CMS credentials, crawl rate limits.
+5. Load config: API keys, target platforms list (ChatGPT, Perplexity, Claude, Gemini, Google AI,
+Grok, Copilot, DeepSeek), CMS credentials, crawl rate limits.
 Obsidian note structure for this phase:
 --target_url: https://example.com/page
 last_audit: 2026-05-01
@@ -170,7 +179,7 @@ Title tag (check: present, ≤60 chars, keyword upfront)
 Meta description (check: present, 50–160 chars)
 H1 count (check: exactly one)
 
-H2–H6 hierarchy
+H2–H6 hierarchy
 Canonical tag (present, self-referential or correct cross-domain)
 3. Async broken link check: httpx async scan of all same-domain outbound links; log non-200
 responses
@@ -208,7 +217,7 @@ produce
 5. Question/prompt research (GEO layer): Collect real user prompts from:
 Reddit threads on the topic
 
-"People Also Ask" boxes in SERP results
+"People Also Ask" boxes in SERP results
 Sales call transcripts (if available in Obsidian memory)
 Social listening data
 Target 20–30 unique prompts per core topic (Profound, 2025)
@@ -245,7 +254,7 @@ sensitivity — log platform-specific patterns (Chen et al., 2025, arXiv:2509.08
 6. Baseline record: Write all scores to Obsidian with timestamp; this is the comparison
 baseline for Phase 10
 
-Output: visibility_baseline.json with per-platform scores, written to Obsidian monitoring
+Output: visibility_baseline.json with per-platform scores, written to Obsidian monitoring
 note.
 
 Phase 4: Content Gap Analysis
@@ -282,7 +291,7 @@ Recommended word count
 Heading structure (H1, H2, H3 outline)
 Internal linking strategy (which existing pages to link to/from, with anchor text)
 
-Required external citations (≥20 high-authority domain citations per quarter target)
+Required external citations (≥20 high-authority domain citations per quarter target)
 (Profound, 2025)
 Competitive positioning statement
 Brand voice profile (loaded from Obsidian memory)
@@ -319,7 +328,7 @@ selection to iteratively improve the draft's GEO visibility score (see Section 7
 Keyword placement (title, H1, first 100 words, subheadings)
 Internal link count and anchor text quality
 
-Word count vs. target
+Word count vs. target
 Entity coverage completeness
 7. GEO scoring pass: Score draft against:
 Attributed Word Count estimate
@@ -356,7 +365,7 @@ answer is ≤100 words per question
 3. Statistics and citations: Every numerical claim has an inline hyperlinked source to
 authoritative domain (government data, peer-reviewed research, industry reports)
 
-4. Table markup: Data comparisons formatted as Markdown tables (render as HTML <table>)
+4. Table markup: Data comparisons formatted as Markdown tables (render as HTML <table>)
 5. Author bio block: Visible author credentials, publication history, organizational affiliation
 (E-E-A-T signal for AI source selection)
 6. LLMs.txt: Confirm domain-level LLMs.txt file exists and is current (Profound, 2025)
@@ -377,9 +386,9 @@ review.
 Sub-steps:
 1. CMS formatting: Convert Markdown to target CMS format (HTML blocks, Gutenberg
 blocks, Sanity portable text, Webflow rich text, etc.)
-2. **Meta tag injection**: Set `<title>`, `<meta name="description">`, `<link rel="ca
+2. **Meta tag injection**: Set `<title>`, `<meta name=\"description\">`, `<link rel=\"ca
 
-3. Schema injection: Embed all structured data as <script type="application/ld+json"> in
+3. Schema injection: Embed all structured data as <script type=\"application/ld+json\"> in
 page <head>
 4. Internal links: Confirm all internal link hrefs resolve to live URLs before publish
 5. Image upload: Upload all images to CDN; replace Markdown image references with CDN
@@ -393,7 +402,7 @@ freshness decay monitoring
 Output: publish_confirmation.json with live URL, publish timestamp, and schema validation
 status.
 
-Phase 9: Monitoring (SEO + GEO Across 8 Platforms)
+Phase 9: Monitoring (SEO + GEO Across 8 Platforms)
 Goal: Continuous post-publish tracking of performance across all search channels.
 Sub-steps (run on schedule — daily for AI visibility; weekly for SEO rankings):
 1. SEO ranking check:
@@ -427,7 +436,7 @@ Goal: When a performance drop is detected, diagnose the root cause and generate 
 actionable fixes ready to apply.
 Sub-steps (the Frase Content Watchdog Level 3 approach):
 
-1. Fetch triggering signal: Load the drop alert from Phase 9 (which metric, which platform,
+1. Fetch triggering signal: Load the drop alert from Phase 9 (which metric, which platform,
 magnitude)
 2. Root cause diagnosis — evaluate each hypothesis:
 Competitor content: Did a competitor publish new/updated content that is now
@@ -460,7 +469,7 @@ Write fix queue to Obsidian inbox
 to Phase 6 with specific instructions
 Output: fix_plan_[timestamp].json, written to Obsidian fix-queue note.
 
-Phase 11: Memory Update (Save to Obsidian)
+Phase 11: Memory Update (Save to Obsidian)
 Goal: Persist all learnings from this loop run to Obsidian so future runs benefit from
 accumulated knowledge.
 Sub-steps:
@@ -499,7 +508,7 @@ Is there a next target in the task queue?
 ├── YES → Return to Phase 0 with next target
 └── NO → Is any page in Obsidian past its review date?
 
-├── YES → Return to Phase 0 with that page as target
+├── YES → Return to Phase 0 with that page as target
 └── NO → Is any fix queued in the Obsidian inbox?
 ├── YES → Execute highest-priority fix (Phase 6 → 7 → 8)
 └── NO → IDLE — set next wake time based on earliest review date
@@ -567,7 +576,7 @@ Clean, hyphenated, keyword-containing
 
 Crawl + user trust
 
-Element
+Element
 
 Standard
 
@@ -629,7 +638,7 @@ Core GEO loop:
 Attributed Word Count (word): How many words from the source document appear
 verbatim or near-verbatim in the engine's response
 
-Position-Weighted Citation Order (pos): A weighted score giving higher credit to citations
+Position-Weighted Citation Order (pos): A weighted score giving higher credit to citations
 that appear earlier in the engine's answer
 2. Apply: Choose and apply one or more content modification strategies from a defined set
 (adding statistics, adding citations, adding quotations, restructuring for scanability, etc.)
@@ -676,7 +685,7 @@ Dominating earned media
 Guest posts on authoritative domains; digital PR; thought leadership publications;
 original research
 
-Strategic Pillar
+Strategic Pillar
 
 Implementation
 
@@ -771,7 +780,7 @@ Not feasible manually
 
 Continuous (daily scheduled)
 
-Task
+Task
 
 Human SEO Professional
 
@@ -853,7 +862,7 @@ Implementation note for Hermes: This phase is run once per domain type when firs
 the agent. The resulting LoRA weights and value head are stored in Obsidian (or a local model
 directory referenced by Obsidian). On subsequent runs, skip directly to Phase 2 or 3.
 
-Phase 2: Online Strategy–Critic Co-Evolution
+Phase 2: Online Strategy–Critic Co-Evolution
 Goal: Maintain and continuously improve a quality-diversity archive of rewriting strategies,
 calibrated against real generative engine feedback.
 Mechanism — MAP-Elites Archive:
@@ -891,7 +900,7 @@ stop
 6. Final draft is the output of the last accepted rewrite step
 Evaluation metrics (per Aggarwal et al., 2023):
 
-word: Attributed Word Count
+word: Attributed Word Count
 pos: Position-Weighted Citation Order
 overall: Composite of word + pos
 
@@ -993,7 +1002,7 @@ Large model / Hermes
 Run Tier 0 first; escalate to Tier 1 only if Tier 0 finds an issue; escalate to Tier 3 only for content
 creation and strategy tasks.
 
-8.2 Structured JSON Outputs
+8.2 Structured JSON Outputs
 Instruct Hermes to output structured JSON for all audit and analysis tasks, not prose. Example:
 {
 
@@ -1034,7 +1043,7 @@ Pre-build per-phase prompt templates stored in Obsidian. Each template has:
 A fixed system prompt (role, rules, output format schema)
 Variable injection points for phase-specific data ({target_keyword}, {content_brief}, etc.)
 
-This prevents Hermes from re-reasoning about output format each run, saves tokens on
+This prevents Hermes from re-reasoning about output format each run, saves tokens on
 instruction overhead, and ensures consistent structured output.
 
 8.7 Batch Processing for GEO Visibility Scans
@@ -1076,7 +1085,7 @@ Earned media outreach tasks (cannot be fully automated)
 This prevents expensive runaway loops on tasks the agent cannot complete correctly without
 human context.
 
-9. Sources
+9. Sources
 Academic Papers
 Citation
 
@@ -1161,5 +1170,3 @@ elect-ai-agent2.html
 
 End of document. All claims in this document are grounded in the sourced data listed in Section 9. No
 claims have been fabricated beyond the provided research.
-
-

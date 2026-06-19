@@ -1,6 +1,2 @@
-# Obsidian workspace settings (user-local, not wiki content)
-.obsidian/
-
-# OS junk
 .DS_Store
-Thumbs.db
+.obsidian/

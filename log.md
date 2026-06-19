@@ -2,51 +2,45 @@
 
 > Chronological record of all wiki actions. Append-only.
 > Format: `## [YYYY-MM-DD] action | subject`
-> Actions: ingest, update, query, lint, create, archive, delete
 
-## [2026-06-09] create | Wiki initialized
-- Domain: SEO / GEO for web applications (Angular/SPA focus)
-- Structure: SCHEMA.md, index.md, log.md, raw/, entities/, concepts/, comparisons/
-- Schema written with full tag taxonomy for technical SEO, on-page, off-page, GEO, analytics, and strategy
+## [2026-06-14] create | Wiki initialized
+- Created SCHEMA.md, index.md, log.md
+- Created directory structure: concepts/, comparisons/, raw/, entities/, queries/
 
-## [2026-06-09] ingest | SEO+GEO Agent Loop Methodology
-- Source: PDF at ~/Downloads/seo_geo_agent_loop.pdf → raw/articles/seo-geo-agent-loop-methodology.md (1158 lines)
-- Created: concepts/seo-geo-master-agent-loop.md — Full 12-phase loop (Phases 0–12)
-- Created: concepts/geo-generative-engine-optimization.md — GEO framework with 4 academic papers
-- Created: concepts/agenticgeo-inner-loop.md — MAP-Elites, Co-Evolving Critic, multi-turn rewriting
-- Created: concepts/seo-loop-methodology.md — Traditional 6-phase human SEO practice
-- Created: concepts/token-saving-strategies.md — 10 cost-reduction patterns
-- Created: comparisons/human-vs-ai-seo-agent.md — Human vs. agent time/capability comparison
-- Updated: index.md — Added all 6 new pages
-- Key themes: ReAct pattern, tiered routing, dual-score optimization, freshness decay (~13 weeks), earned media bias in AI search
+## [2026-06-18] create | Site expansion + content optimization
+- Created AIONAI-EXPANSION-SPEC.md (17 routes, full content, SEO specs)
+- Created CONTENT-OPTIMIZATION-PLAN.md (page-by-page audit)
+- Created GEO-HEALTH-CHECK-2026-06-18.md (57/100 home, 62/100 solutions)
+- Pipeline: 171 keywords, 34 ranked. New rising: ai consulting (+20%), ai engineers (+27%), ai για δικηγόρους/λογιστές (+100%)
+- llms.txt updated, 13 citations added, JSON-LD in constructor for SSR
+- 17 static routes prerendered via @angular/ssr
 
-## [2026-06-09] create | aionAI-adapted-plan
-- Created: concepts/aionai-adapted-plan.md — 6-phase adapted SEO/GEO plan specific to the aionAI Angular 21.2 SPA
-- Adapted from the 12-phase loop: collapsed to 6 phases prioritizing crawlability, static foundation fixes, on-page GEO, prerendering, right-sized monitoring, and Greek-market authority building
-- Key edits to generic research: fixed canonical bug identified, sitemap gap, static JSON-LD mismatch, hash routing crawlability concerns, reduced monitoring scope from 8 to 3 platforms, calibrated citation targets for Greek market
-- Saved to memory for cross-session persistence
-- Updated: index.md — Added under new "Concepts (aionAI-specific)" section
+## [2026-06-14] ingest | Pipeline architecture
+- Created [[pipeline-architecture]] in concepts/
+- Created [[data-directory-structure]] in concepts/
+- Created [[perplexity-vs-agent-approach]] in comparisons/
 
-## [2026-06-10] create | aionAI Collaboration Model
-- Created: concepts/aionai-collaboration-model.md
-- Full collaboration workflow definition: RESEARCH → PROPOSE → REVIEW → COMMIT → OBSERVE → REPEAT
-- 20 task backlog across 5 groups (A-E), each cross-referenced against SEO.md + seo-geo skill + Perplexity research
-- Known bugs documented: phone mismatch (index.html vs app.ts), canonical URL bug, static JSON-LD issue
-- Continuous loop design for future refinement
-- Key tools inventory: SEO.md, seo-geo skill (Princeton 9 + audit framework + pre-publish checklist + keyword research), Perplexity research, competitor research
-- Memory updated with collaboration model + user profile
-- Updated: index.md — Added entry
+## [2026-06-15] create | GEO pipeline extension implemented
+- Enhanced `competitor_scraper.py` with 8 GEO extraction functions: TL;DR, FAQ text, lists, tables, citations, author, answer-first, statistics + `calculate_geo_readiness()`
+- Added `--geo-check` mode to `site_scraper.py` for self-GEO analysis
+- Run results: aionAI GEO score = 67/100, 46 competitors analyzed
+- Documentation: [[geo-pipeline-extension]] (updated with implementation details)
+- Created [[competitor-keyword-gap-results]] in concepts/
+- Updated index.md with new page
+- PDF documentation generated: aionai-seo-pipeline-documentation.pdf
+- Created skill: [[competitor-keyword-gap-analysis]]
 
-## [2026-06-10] lint | First wiki health check
-- Ran systematic lint on all 8 wiki pages + 1 raw source + SCHEMA compliance
-- **Fixed:** seo-geo-master-agent-loop.md — added 5 outbound [[wikilinks]] (GEO, AgenticGEO, MAP-Elites archive, token-saving-strategies, seo-loop-methodology) and Related section
-- **Fixed:** aionai-adapted-plan.md & aionai-collaboration-model.md — removed broken source references to entities/aionai-site.md (file never created)
-- **Fixed:** aionai-adapted-plan.md — added link to [[aionai-collaboration-model]] in Related section
-- **Noted:** entities/ directory empty (expected — only 1 source ingested); 14 of 37 tag taxonomy tags unused (expected for small corpus); no contradictions yet
-- **Remaining:** 2 pages' `updated` dates not bumped (minor — pages last written today)
+## [2026-06-16] create | Proper unified GEO pipeline + measurement fix
+- Discovered CRITICAL measurement bug: our site was scored from source code (67/100) while competitors from rendered HTML (21.9 avg) — completely non-comparable
+- Created `lib/geo_scorer.py` — unified GEO scoring with identical signals and weights for ALL sites
+- Created `analysis/geo_market_analysis.py` — competitor GEO analysis via rendered HTML with unified scoring
+- Created `analysis/geo_gap_scorer.py` — us vs market comparison with recommendations
+- Created `scrapers/citation_scraper.py` — GEO citation gap check via Google search (proxy for ChatGPT/Perplexity)
+- **Real GEO score: 34/100** (market avg 17.7, max 50). Previous 67/100 was measurement error.
+- Run results: 20 competitors analyzed, 12-signal comparison, full gap report at data/latest/geo_gaps.json
+- Health check confirmed: Googlebot sees 0 words, SPA shell, only JSON-LD + meta visible
+- Phone truncation bug confirmed on live server: +30 693461355 (12 digits) vs source +30 6934613555 (13 digits)
+- Wiki: created concepts/geo-pipeline-unified-scoring.md
 
-## [2026-06-10] op | Git repo initialized
-- `git init` in ~/wiki-seo/ — root commit `e57ddd7`
-- 12 files tracked (1 raw source, 8 wiki pages, SCHEMA.md, index.md, log.md)
-- `.gitignore` added for Obsidian workspace + OS junk
-- Wiki now has version history, branching, and rollback per the Karpathy pattern
+## [2026-06-14] ingest | New pipeline features
+- Created [[new-pipeline-features-2026-06-14]] in raw/articles/

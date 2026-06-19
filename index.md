@@ -11,7 +11,8 @@
 - [[aionai-adapted-plan]] — Adapted SEO/GEO plan for aionAI
 - [[aionai-planb-simplified-loop]] — Simplified Plan B pipeline
 - [[aionai-static-pages-workflow]] — Blog/service page creation workflow
-| [[pipeline-architecture]] — Full SEO pipeline: keyword discovery → trend validation → SERP scraping → competitor analysis → gap scoring (NEW 2026-06-14)
+- [[supabase-integration]] — Pipeline data storage in Supabase (11 tables, 12 scripts modified) (NEW 2026-06-19)
+- [[pipeline-architecture]] — Full SEO pipeline: keyword discovery → trend validation → SERP scraping → competitor analysis → gap scoring (NEW 2026-06-14)
 | [[competitor-keyword-gap-results]] — Results of competitor-based keyword gap analysis, 2026-06-15 (NEW 2026-06-15)
 - [[data-directory-structure]] — data/runs/YYYY-MM-DD + latest/ symlinks organization (NEW 2026-06-14)
 - [[geo-generative-engine-optimization]] — GEO theory and practice

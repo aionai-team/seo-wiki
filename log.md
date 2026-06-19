@@ -44,3 +44,12 @@
 
 ## [2026-06-14] ingest | New pipeline features
 - Created [[new-pipeline-features-2026-06-14]] in raw/articles/
+
+## [2026-06-19] integration | Supabase storage + 12 scripts modified
+- Created lib/supabase_client.py — shared Supabase singleton
+- Created tools/migrate_to_supabase.py — migration script
+- All 12 pipeline scripts write to Supabase via --run-id
+- Dual-write: JSON files preserved for backward compat
+- Pipeline run 01b28898 verified: all tables populated
+- Git commit a5e8a34 pushed
+- Wiki: created concepts/supabase-integration.md
